@@ -17,7 +17,7 @@ count: false
 layout: true
 
 .footer[
-- Copyright © 2019 HashiCorp
+- Copyright 2019 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
@@ -25,7 +25,7 @@ layout: true
 name: vault-auth-methods
 # Vault Authentication Methods
 .center[![:scale 45%](images/vault_auth_methods.png)]
-.center[Vault supports many different authentication methods.]
+.center[Vaultは多くのAuth methodをサポートしています。]
 
 ???
 * Auth methods are how your apps and users verify their identity.
@@ -73,14 +73,14 @@ name:vault-auth-methods-2
 name: enabling-auth-methods
 # Enabling Authentication Methods
 
-* Most Vault auth methods need to be explicitly enabled.
-* This is done with the `vault auth enable` command.
-* Each auth method has a default path.
-* Alternate paths can be specified to enable multiple instances:<br> `vault auth enable -path=aws-east aws`
-* Custom paths must be specified in CLI commands and API calls:<br>
-`vault write aws-east/config/root`<br>
-instead of<br>
-`vault write aws/config/root`
+* Vault auth methodsは明示的に有効にします。
+	* `vault auth enable`で行います。
+* 各auth methodはデフォルトのPathがあります。
+* 別のPathも設定可能です。
+	* `vault auth enable -path=aws-east aws`
+* カスタムPathへCLIやAPIでアクセスします。
+	* カスタムパス： `vault write aws-east/config/root`
+	* デフォルト： `vault write aws/config/root`
 
 ???
 
@@ -92,7 +92,7 @@ instead of<br>
 name: userpass-0
 # Vault's Userpass Auth Method
 .center[![:scale 30%](images/userpass_login.png)]
-* The Userpass method authenticates users with usernames and passwords managed by Vault.
+* Userpass メソッドは、Vault が管理するユーザー名とパスワードでユーザーを認証します。
 
 ???
 * The Userpass method allows users to authenticate with username and password managed by Vault.
@@ -100,25 +100,42 @@ name: userpass-0
 * In the real world you'd probably have Vault use your Active Directory, LDAP, GitHub, or other system of record for authentication by users.
 
 ---
+name: lab-vault-basics-challenge-6
+# Lab Challenge 5.1: Userpass Auth Method
+* In this lab, you'll enable and use the Userpass auth method.
+* Instructions:
+  * Click the "Use the Userpass Auth Method" challenge of the "Vault Basics" track.
+  * Then click the green "Start" button.
+  * Follow the challenge's instructions.
+  * Click the green "Check" button when finished.
+
+???
+* Instruct the students to do the "Use the Userpass Auth Method" challenge of the "Vault Basics" track.
+* This challenge has them enable an instance of the Userpass auth method.
+* It also demonstrates that Vault is "deny by default" since the Userpass user that they create will not have any access to secrets yet.
+
+---
 name: chapter-5-review-questions
-# 📝 Chapter 5 Review
-* What types of entities can Vault authenticate?
-* What system manages credentials for the Userpass auth method?
-* Can a user that is not assigned any policies other than the default policy access any secrets?
+# Chapter 5 Review
+* Vault では、どのような種類のエンティティを認証できますか？
+* Userpass 認証方法の資格情報は、どのようなシステムで管理されていますか？
+* デフォルトのポリシー以外のポリシーが割り当てられていないユーザーは、シークレットにアクセスできますか？
+
 
 ???
 * Let's review what we learned in this chapter.
 
 ---
 name: chapter-5-review-answers
-# 📝 Chapter 5 Review
+# Chapter 5 Review
 
-* What types of entities can Vault authenticate?
-  * Users and applications
-* What system manages credentials for the Userpass auth method?
+* Vault は、どのような種類のエンティティを認証できますか？
+  * ユーザーおよびアプリケーション
+* Userpass auth メソッドの認証情報を管理するシステムは何ですか?
   * Vault
-* Can a user that is not assigned any policies other than the default policy access any secrets?
-  * No
+* デフォルトポリシー以外のポリシーが割り当てられていないユーザーは、シークレットにアクセスできますか?
+  * いいえ
+
 
 ???
 * Here are the answers to the review questions.

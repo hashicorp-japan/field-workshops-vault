@@ -16,9 +16,9 @@ name: hashiCorp-vault-overview
 # HashiCorp Vault Overview
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_vault.png)
 
-  * HashiCorp Vault is an API-driven, cloud agnostic secrets management system.
-  * It allows you to safely store and manage sensitive data in hybrid cloud environments.
-  * You can also use Vault to generate dynamic short-lived credentials, or encrypt application data on the fly.
+  * HashiCorp Vaultは、API主導のクラウドに依存しない秘密管理システムです。
+  * ハイブリッドクラウド環境でセンシティブなデータを安全に保存・管理することができます。
+  * Vault を使用して、動的に短命のクレデンシャルを生成したり、アプリケーションのデータをその場で暗号化したりすることもできます。
 
 ???
 This is meant as a high level overview.  For detailed descriptions or instructions please see the docs, API guide, or learning site:
@@ -31,7 +31,7 @@ name: the-old-way
 layout: false
 # The Traditional Security Model
 .center[![:scale 70%](images/bodiam_castle.jpg)]
-.center[Also known as the "Castle and Moat" method.]
+.center[別名「城と堀法」とも呼ばれています。"Castle and Moat"]
 
 ???
 * This picture shows the traditional castle and moat security model.
@@ -40,16 +40,16 @@ layout: false
 layout: true
 
 .footer[
-- Copyright © 2019 HashiCorp
+- Copyright 2019 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
 ---
 name: traditional-security-models
 # The Traditional Security Model
-* Traditional security models were built upon the idea of perimeter based security.
-* There would be a firewall, and inside that firewall it was assumed one was safe.
-* Resources such as databases were mostly static.  As such rules were based upon IP address, credentials were baked into source code or kept in a static file on disk.
+* 従来のセキュリティモデルは、境界線に基づいたセキュリティの考えに基づいて構築されていました。
+* ファイアウォールがあり、その中では安全だと思われていました。
+* データベースなどのリソースは、ほとんどが静的なものでした。 そのようなルールは IP アドレスに基づいており、クレデンシャルはソースコードに組み込まれていたり、ディスク上の静的ファイルに保存されていました。
 
 ???
 This slide discusses the traditional security model
@@ -57,11 +57,11 @@ This slide discusses the traditional security model
 ---
 name: problems-with-traditional-security-models
 # Problems with the Traditional Security Model
-* IP Address based rules
-* Hardcoded credentials with problems such as:
-  * Shared service accounts for apps and users
-  * Difficult to rotate, decommission, and determine who has access
-  * Revoking compromised credentials could break
+* IPアドレスベースのルール
+* 以下のような問題のあるハードコードされた資格情報。
+  * アプリとユーザーの共有サービスアカウント
+  * Rotationさせたり、破棄したり、誰がアクセスできるかを判断するのは難しい。
+  * 危険なクレデンシャルを破棄する影響が大きい
 
 ???
 * This slide describes some of the problems with the traditional security model.
@@ -70,7 +70,7 @@ name: the-new-way
 layout: false
 # Modern Secrets Management
 .center[![:scale 65%](images/nomadic_houses.jpg)]
-.center[No well defined perimeter; security enforced by identity.]
+.center[十分に定義された境界線がないため、アイデンティティによってセキュリティが強化されています。]
 
 ???
 * These are Mongolian Yurts or "Ger" as they are called locally. Instead of a castle with walls and a drawbridge, a fixed fortress that has an inside and an outside, these people move from place to place, bringing their houses with them.
@@ -95,7 +95,7 @@ name: identity-based-security-1
 layout: true
 
 .footer[
-- Copyright © 2019 HashiCorp
+- Copyright 2019 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
@@ -103,12 +103,12 @@ layout: true
 name: identity-based-security-2
 # Identity Based Security
 
-Vault was designed to address the security needs of modern applications.  It differs from the traditional approach by using:
+Vaultは、現代のアプリケーションのセキュリティニーズに対処するために設計されました。 その使用方は、従来のアプローチとは異なります。
 
-* Identity based rules allowing security to stretch across network perimeters
-* Dynamic, short lived credentials that are rotated frequently
-* Individual accounts to maintain provenance (tie action back to entity)
-* Credentials and Entities that can easily be invalidated
+* アイデンティティベースのルールにより、ネットワークの境界を越えてセキュリティを拡張することができます。
+* 頻繁にローテーションするダイナミックで短命なクレデンシャル
+* 複数のアカウントでもエンティティによって単一ユーザーとして扱える
+* 簡単に無効化できるクレデンシャルとエンティティ
 
 ???
 * This slide discusses how Vault is designed for modern applications.
@@ -163,13 +163,13 @@ name: vault-reference-architecture-3
 layout: true
 
 .footer[
-- Copyright © 2019 HashiCorp
+- Copyright 2019 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
 ---
 name: chapter-1-review-question
-# 📝 Chapter 1 Review
+# Chapter 1 Review
 
 * What is HashiCorp Vault?
 
@@ -177,14 +177,14 @@ name: chapter-1-review-question
 * Let's review what we learned in this chapter.
 ---
 name: chapter-1-review-answer
-# 📝 Chapter 1 Review
+# Chapter 1 Review
 * What is HashiCorp Vault?
-  * Vault is a Secrets Management System.
-  * It is API-driven and cloud agnostic.
-  * It can be used in untrusted networks.
-  * It can authenticate users and applications against many systems.
-  * It supports dynamic generation of short-lived secrets.
-  * It runs in highly available clusters that can be replicated across regions.
+ * Vaultはシークレット管理システムです。
+  * API駆動で、クラウドに依存しません。
+  * 信頼されていないネットワーク上での使用を想定して開発されています。
+  * 多くのシステムに対応したユーザーやアプリケーションの認証が可能です。
+  * 短命なシークレットの動的生成をサポートします。
+  * Resionをまたいで複製可能な、高可用性のクラスタを構築します。
 
 ???
 * Here are the answers to the review questions.

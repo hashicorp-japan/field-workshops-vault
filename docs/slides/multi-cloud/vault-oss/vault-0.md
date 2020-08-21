@@ -4,7 +4,7 @@ background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/
 count: false
 
 # Vault OSS Workshop
-## Modern Security with Vault for any Cloud
+## 全てのクラウドへ向けたモダンセキュリティ
 
 ![:scale 15%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_vault.png)
 
@@ -17,14 +17,14 @@ It is cloud agnostic.
 layout: true
 
 .footer[
-- Copyright © 2019 HashiCorp
+- Copyright 2019 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
 ---
 name: Link-to-Slide-Deck
 # The Slide Deck
-<br><br>
+
 ### Follow along on your own computer at this link:
 
 https://hashicorp.github.io/field-workshops-vault/slides/multi-cloud/vault-oss/index.html
@@ -37,10 +37,12 @@ The link to this slide deck
 name: Introductions
 # Introductions
 
-* Your Name
-* Job Title
+* Masatomo Ito
+* Sr. Solution Engineer
 * Secrets Management Experience
+	* Vault
 * Favorite Text Editor
+	* vi
 
 ???
 * Use this slide to introduce yourself, give a little bit of your background story, then go around the room and have all your participants introduce themselves.
@@ -66,12 +68,9 @@ The table of contents for the workshop
 ---
 name: instruqt-tracks
 # Lab Environment Used
-* This workshop uses [Instruqt](https://instruqt.com) for hands-on labs.
-* Instruqt labs are run in "tracks" that are divided into "challenges".
-* This workshop uses the following tracks:
+* このワークショップでは[Instruqt](https://instruqt.com)でハンズオン作業をしていただきます。
+* Instruqtではいくつかのトラックでチャレンジをこなしていただきます。
+* このワークショップでは以下のトラックを使用します。
     1. [Vault Basics](https://play.instruqt.com/hashicorp/invite/qfwncq62zsxu)
     1. [Vault Dynamic Database Credentials](https://play.instruqt.com/hashicorp/invite/sryhqfdm6sgx)
     1. [Vault Encryption as a Service](https://play.instruqt.com/hashicorp/invite/qleasfx1dszc)
-* We'll cover chapters 1-6 and then do the first lab.
-* We'll then cover chapter 7 with the second lab.
-* We'll finish with chapter 8 and the third lab.

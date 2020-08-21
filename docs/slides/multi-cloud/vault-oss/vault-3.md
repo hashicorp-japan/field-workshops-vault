@@ -16,18 +16,18 @@ Chapter 3 focuses on running a production Vault server
 layout: true
 
 .footer[
-- Copyright © 2019 HashiCorp
+- Copyright 2019 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
 ---
 name: vault-production-serves
 # Running a Production Vault Server
-* Running a Vault server in "Prod" mode involves multiple steps:
-  * Specify configuration in a config file.
-  * Start the server.
-  * Initialize the server to get unseal keys and an initial root token.
-  * Unseal the Vault server with the unseal keys.
+* ProdモードでVaultサーバを実行するには、複数の手順が必要です。
+  * configファイルで構成を指定します。
+  * サーバを起動します。
+  * サーバーを初期化して、Unsealキーと初期ルート トークンを取得します。
+  * Unsealキーを使用して、Vault サーバの暗号化を解除します。
 
 ???
 * Describe the steps to run a production Vault server.
@@ -35,8 +35,8 @@ name: vault-production-serves
 ---
 name: configuring-vault
 # Configuring Vault Servers
-* Vault configuration files can be specified in [HCL](https://github.com/hashicorp/hcl) or JSON.
-* Common configuration settings include:
+* VaultのConfigファイルは[HCL](https://github.com/hashicorp/hcl) もしくは JSONで記述されます。
+* Common configuration settings:
   * listener
   * storage
   * seal
@@ -51,8 +51,8 @@ name: configuring-vault
 ---
 name: running-vault
 # Starting a Production Vault Server
-* You use the `vault server` command to start a Vault Production server.
-* But, you do not use the `-dev` option.
+* Vault Productionサーバを起動するには、`vault server`コマンドを使用します。
+* **注意** `-dev` オプションは使用しません。
 
 ???
 * Describe the command to run a Vault production server.
@@ -60,11 +60,11 @@ name: running-vault
 ---
 name: initializing-vault
 # Initializing Vault Clusters
-* Recall that a Vault cluster runs multiple Vault servers.
-* Each Vault cluster must be initialized once.
-* This is done with the `vault operator init` command.
-* The number of key shares and the key threshold can be specified with the `-key-shares` and `key-threshold` options.
-* The command returns the unseal keys and the initial root token for the cluster.
+* 1 つの Vault クラスタは、複数の Vault サーバで構成されます。
+* 各 Vault クラスタは、一度初期化する必要があります。
+* 初期化は`vault operator init`コマンドで行います。
+* Unsealキーの数と鍵のしきい値は、`-key-shares` および `key-threshold` オプションで指定できます。
+* このコマンドにより、Unsealキーとクラスタの初期ルートトークンを返します。
 
 ???
 * Describe Vault's `init` command
@@ -72,47 +72,62 @@ name: initializing-vault
 ---
 name: unsealing-vault
 # Unsealing Vault Servers
-* Each Vault server must be unsealed each time it is started.
-* You cannot use the server until you unseal it.
-* This is done with the `vault operator unseal` command, using the unseal keys returned when you initialized the cluster.
+* 各 Vault サーバーは、起動するたびにUnsealされる必要があります。
+* Unsealされるまでは、サーバーを使用することはできません。
+* Unsealは、クラスタを初期化したときに返された unseal キーを使用して、`vault operator unseal` コマンドで行います。
 
 ???
 * Describe Vault's `unseal` command.
+---
+name: lab-vault-basics-challenge-4
+# Lab Challenge 3.1: Run a Vault "Prod" Server
+* In this lab, you'll run your first Vault server in "Prod" mode.
+* You'll learn how to initialize and unseal a Vault server.
+* Instructions:
+  * Click the "Run a Production Server" challenge of the "Vault Basics" track.
+  * Then click the green "Start" button.
+  * Follow the challenge's instructions.
+  * Click the green "Check" button when finished.
+
+???
+* Instruct the students to do the "Run a Production Server" challenge of the "Vault Basics" track.
+* This challenge has them examine a Vault server configuration file, run a Prod server, initialize it, and unseal it.
+* Remind students to save their unseal key and root token.
 
 ---
 name: vault-status-command
 # Determining the Status of a Vault Server
-* Use the `vault status` command to get the status of a Vault server.
-* It will tell you if your Vault server is sealed or unsealed.
-* It will also tell you the following:
-  * the number of key shares and the key threshold
-  * whether HA mode (clustering) is enabled
-  * whether the server is running as a performance standby.
+* Vault サーバの状態を取得するには、`vault status` コマンドを使用します。
+* これにより、Vault サーバがSealされているか、Sealされていないかがわかります。
+* また、以下の情報も表示されます。
+  * 鍵の数と鍵のしきい値
+  * HA モード（クラスタリング）が有効かどうか
+  * サーバーがパフォーマンススタンバイとして動作しているかどうか。
 
 ???
 Describe the `vault status` command
 
 ---
 name: chapter-3-review-questions
-# 📝 Chapter 3 Review
+# Chapter 3 Review
 
-* What is used to configure a "Prod" mode Vault server?
-* What Vault command needs to be run once against a new Vault cluster?
-* What Vault command has to be run each time a Vault server is started?
+* ProdモードのVaultサーバを構成するために使用するものは何ですか？
+* 新しいVaultクラスタに対して、どのようなVaultコマンドを一度だけ実行する必要がありますか？
+* Vault サーバを起動するたびに、どのような Vault コマンドを実行する必要がありますか？
 
 ???
 * Let's review what we learned in this chapter.
 
 ---
 name: chapter-3-review-answers
-# 📝 Chapter 3 Review
+# Chapter 3 Review
 
-* What is used to configure a "Prod" mode Vault server?
-  * A configuration file
-* What Vault command needs to be run once against a new Vault cluster?
-  * `vault operator init`
-* What Vault command has to be run each time a Vault server is started?
-  * `vault operator unseal`
+* Prod」モードのVaultサーバーを構成するために使用するものは何ですか？
+  * Configファイル
+* 新しいVaultクラスタに対して一度だけ実行する必要があるVaultコマンドは何ですか？
+  * `vault operator init` 
+* Vault サーバが起動するたびに実行しなければならない Vault コマンドは何ですか?
+  * `vault operator unseal` 
 
 ???
 * Here are the answers to the review questions.

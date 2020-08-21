@@ -17,7 +17,7 @@ count: false
 layout: true
 
 .footer[
-- Copyright © 2019 HashiCorp
+- Copyright 2019 HashiCorp
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
@@ -26,7 +26,7 @@ name: vault-secrets-engines-1
 # Vault Secrets Engines
 
 .center[![:scale 65%](images/vault-secrets-engines.png)]
-.center[Vault includes many different secrets engines.]
+.center[Vaultには多くのsecrets enginesがあります。]
 
 ???
 * Use this screenshot from the Vault UI to talk about Vault's many secrets engines but note that the next slide lists them too.
@@ -61,14 +61,14 @@ Spend some time pointing out what some of these do:
 name: enabling-secrets-engines
 # Enabling Secrets Engines
 
-* Most Vault secrets engines need to be explicitly enabled.
-* This is done with the `vault secrets enable` command.
-* Each secrets engine has a default path.
-* Alternate paths can be specified to enable multiple instances:<br> `vault secrets enable -path=aws-east aws`
-* Custom paths must be specified in CLI commands and API calls:<br>
-`vault write aws-east/config/root`<br>
-instead of<br>
-`vault write aws/config/root`
+* ほとんどの Vault secrets engineは、明示的に有効にする必要があります。
+	* `vault secrets enable`コマンドで行います。
+* 各エンジンはデフォルトのPathがあります。
+	* カスタムパスは、CLIコマンドやAPIコールで指定する必要があります。
+	* `vault secrets enable -path=aws-east aws` というコマンドで行います。
+* カスタムパスはCLIやAPIのエンドポイントとなります。
+	* デフォルト：　`vault write aws-east/config/root`
+	* カスタムパス：　`vault write aws/config/root` 
 
 ???
 
@@ -79,55 +79,68 @@ instead of<br>
 ---
 name: vault-kv-engine
 # Vault's KV Secrets Engine
-* Vault's KV secrets engine actually has 2 versions:
-  * KV v1 (without versioning)
-  * KV v2 (with versioning)
-* In the second lab challenge, we used the instance of the KV v2 engine that is automatically enabled for "Dev" mode Vault servers.
-* Vault does not enable any instances of the KV secrets engine for "Prod" mode servers.
-* So, you'll need to enable it yourself.
+* VaultのKV Secret engineには2つのバージョンがあります。
+  * KV v1 (バージョニングなし)
+  * KV v2 (バージョニング付き)
+* Vault は、「Prod」モードのサーバでは、KV シークレットエンジンのインスタンスを有効にしません。
+* 自分で有効にする必要があります。
 
 ???
 * We already used Vault's Key/Value (KV) engine in the second challenge of the "Vault Basics" Instruqt track that had been automatically enabled for the "Dev" mode server.
 * But we'll need to mount it ourselves for the "Prod" mode server.
 
+
 ---
 name: vault-kv-commands
 # KV Secrets Engine Commands
-* Use this command to mount an instance of the KV v2 secrets engine on the default path `kv`:<br>
-`vault secrets enable -version=2 kv`
-* The `vault kv` commands allow you to interact with KV engines.
-  * `vault kv list` lists secrets at a specified path.
-  * `vault kv put` writes a secret at a specified path.
-  * `vault kv get` reads a secret at a specified path.
-  * `vault kv delete` deletes a secret at a specified path.
-* Other `vault kv` subcommands operate on versions of KV v2 secrets.
+* 以下のコマンドを使用して、KV v2 secrets engineのインスタンスをデフォルトパス `kv`にマウントします。
+	* `vault secrets enable -version=2 kv` のようにしてください。
+* `vault kv` コマンドでKV seacret engineを操作することができます。
+  * `vault kv list` は指定されたパスのシークレットをリストアップします。
+  * `vault kv put` は指定したパスにシークレットを書き込みます。
+  * `vault kv get` は指定したパスにあるシークレットを読み込みます。
+  * `vault kv delete` は指定されたパスにあるシークレットを削除します。
 
 ???
+* サンプル
 
-* Describe how to mount an instance of the KV v2 secrets engine.
-* Describe the various `vault kv` subcommands.
+---
+name: lab-vault-basics-challenge-5
+# Lab Challenge 4.1: KV v2 Secrets Engine
+* In this lab, you'll enable and use the KV v2 secrets engine.
+* Note that the path will be `kv` instead of `secret`.
+* Instructions:
+  * Click the "Use the KV V2 Secrets Engine" challenge of the "Vault Basics" track.
+  * Then click the green "Start" button.
+  * Follow the challenge's instructions.
+  * Click the green "Check" button when finished.
+
+???
+* Instruct the students to do the "Use the KV V2 Secrets Engine" challenge of the "Vault Basics" track.
+* This challenge has them enable an instance of the KV v2 secrets engine.
+* Emphasize that the path will be `kv` instead of `secret` as was the case for the challenges with the Dev mode server.
 
 ---
 name: chapter-4-review-questions
-# 📝 Chapter 4 Review
+# Chapter 4 Review
 
-* What option is added to the `vault secrets enable` command to enable multiple instances?
-* What is the difference between the two versions of the KV secrets engine?
-* Can an old version of a KV v2 secret be retrieved?
+* 複数のインスタンスを有効にするために、`vault secrets enable`コマンドにはどのようなオプションが追加されますか?
+* KVのSecret engineの2つのバージョンの違いは何ですか?
+* KV v2シークレットの古いバージョンは取得できますか?
 
 ???
 * Let's review what we learned in this chapter.
 
 ---
 name: chapter-4-review-answers
-# 📝 Chapter 4 Review
+# Chapter 4 Review
 
-* What option is added to the `vault secrets enable` command to enable multiple instances?
-  * Add the `-path=<path>` option and use `<path>` with the CLI and API.
-* What is the difference between the two versions of the KV secrets engine?
-  * KV V2 supports versioning of secrets.
-* Can an old version of a KV v2 secret be retrieved?
-  * Yes. You did this in Vault UI in the challenge.
+* 複数のインスタンスを有効にするには、`vault secrets enable` コマンドにどのようなオプションを追加しますか?
+  * `-path=<path>` オプションを追加し、CLIとAPIで`<path>`を使用してください。
+* KV secrets engineの2つのバージョンの違いは何ですか?
+  * KV V2はシークレットのバージョニングをサポートしています。
+* 古いバージョンのKV v2シークレットを取得することはできますか?
+  * KV V2はシークレットのバージョニングをサポートしています。
 
 ???
 * Here are the answers to the review questions.
