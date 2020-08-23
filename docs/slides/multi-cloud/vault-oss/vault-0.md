@@ -25,9 +25,9 @@ layout: true
 name: Link-to-Slide-Deck
 # The Slide Deck
 
-### Follow along on your own computer at this link:
+### 使用するスライドはこちらになります。
 
-https://hashicorp.github.io/field-workshops-vault/slides/multi-cloud/vault-oss/index.html
+https://hashicorp-japan.github.io/field-workshops-vault/docs/slides/multi-cloud/vault-oss/index.html
 
 ???
 
