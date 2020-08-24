@@ -12,11 +12,11 @@ These slides introduce the Vault Basics track.
 
 ---
 name: getting-started-with-instruqt
-# Instruqt‚Å‚ÌLab
-* [Instruqt](https://instruqt.com/)‚Æ‚¢‚¤‰¼‘zŠÂ‹«\’zƒvƒ‰ƒbƒgƒtƒH[ƒ€‚ğ—p‚¢‚ÄLab‚ğs‚¢‚Ü‚·B
-* Instruqt labs‚Í"Track"‚ª‚ ‚èA‚»‚ê‚¼‚ê‚É‚¢‚­‚Â‚©‚Ì"challenges"‚ª‚ ‚è‚Ü‚·B
-* ‚à‚µAInstuqt‚É‚Â‚¢‚Ä‚æ‚èÚ×‚ğ‚µ‚è‚½‚¯‚ê‚Î[tutorial](https://play.instruqt.com/instruqt/tracks/getting-started-with-instruqt)‚ğQÆ‚­‚¾‚³‚¢B
-* ‚±‚Ì"Vault Basics"‚ÌTrack‚Å‚Íchapters 2-6‚Ì“à—e‚ğƒJƒo[‚µ‚Ä‚¢‚Ü‚·B
+# Instruqtã§ã®Lab
+* [Instruqt](https://instruqt.com/)ã¨ã„ã†ä»®æƒ³ç’°å¢ƒæ§‹ç¯‰ãƒ—ãƒ©ãƒƒãƒˆãƒ•ã‚©ãƒ¼ãƒ ã‚’ç”¨ã„ã¦Labã‚’è¡Œã„ã¾ã™ã€‚
+* Instruqt labsã¯"Track"ãŒã‚ã‚Šã€ãã‚Œãã‚Œã«ã„ãã¤ã‹ã®"challenges"ãŒã‚ã‚Šã¾ã™ã€‚
+* ã‚‚ã—ã€Instuqtã«ã¤ã„ã¦ã‚ˆã‚Šè©³ç´°ã‚’ã—ã‚ŠãŸã‘ã‚Œã°[tutorial](https://play.instruqt.com/instruqt/tracks/getting-started-with-instruqt)ã‚’å‚ç…§ãã ã•ã„ã€‚
+* ã“ã®"Vault Basics"ã®Trackã§ã¯chapters 2-6ã®å†…å®¹ã‚’ã‚«ãƒãƒ¼ã—ã¦ã„ã¾ã™ã€‚
 
 ???
 * We'll be using the Instruqt platform for labs in this workshop.
