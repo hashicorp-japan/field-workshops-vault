@@ -69,7 +69,7 @@ name: the-new-way
 layout: false
 # モダンなシークレット管理
 .center[![:scale 65%](images/nomadic_houses.jpg)]
-.center[十分に定義された境界線がないため、アイデンティティによってセキュリティを強化します。]
+定義された境界線がないため、アイデンティティによってセキュリティを強化します。
 
 ???
 * These are Mongolian Yurts or "Ger" as they are called locally. Instead of a castle with walls and a drawbridge, a fixed fortress that has an inside and an outside, these people move from place to place, bringing their houses with them.
