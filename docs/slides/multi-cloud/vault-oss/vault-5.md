@@ -34,10 +34,10 @@ name: vault-auth-methods
 
 ---
 name:vault-auth-methods-2
-# Some Important Vault Auth Methods
+# いくつかのVault Auth Methods
 
 <div style="float: left; width: 50%;">
-<u>Methods for Users</u>
+<u>ユーザー用のMethods</u>
 <ul>
 <li>Userpass</li>
 <li>GitHub</li>
@@ -47,7 +47,7 @@ name:vault-auth-methods-2
 </ul>
 </div>
 <div style="float: right; width: 50%;">
-<u>Methods for Applications</u>
+<u>アプリケーション用のMethods</u>
 <ul>
 <li>AppRole</li>
 <li>AWS</li>
@@ -71,9 +71,9 @@ name:vault-auth-methods-2
 
 ---
 name: enabling-auth-methods
-# Enabling Authentication Methods
+# Authentication Methodsの有効化
 
-* Vault auth methodsは明示的に有効にします。
+* Vault auth methodsも明示的に有効化します。
 	* `vault auth enable`で行います。
 * 各auth methodはデフォルトのPathがあります。
 * 別のPathも設定可能です。
@@ -90,7 +90,7 @@ name: enabling-auth-methods
 
 ---
 name: userpass-0
-# Vault's Userpass Auth Method
+# Userpass Auth Method
 .center[![:scale 30%](images/userpass_login.png)]
 * Userpass メソッドは、Vault が管理するユーザー名とパスワードでユーザーを認証します。
 
@@ -98,32 +98,6 @@ name: userpass-0
 * The Userpass method allows users to authenticate with username and password managed by Vault.
 * It is not recommended for production, but it's fine for development and lab environments.
 * In the real world you'd probably have Vault use your Active Directory, LDAP, GitHub, or other system of record for authentication by users.
-
----
-name: lab-vault-basics-challenge-6
-# Lab Challenge 5.1: Userpass Auth Method
-* In this lab, you'll enable and use the Userpass auth method.
-* Instructions:
-  * Click the "Use the Userpass Auth Method" challenge of the "Vault Basics" track.
-  * Then click the green "Start" button.
-  * Follow the challenge's instructions.
-  * Click the green "Check" button when finished.
-
-???
-* Instruct the students to do the "Use the Userpass Auth Method" challenge of the "Vault Basics" track.
-* This challenge has them enable an instance of the Userpass auth method.
-* It also demonstrates that Vault is "deny by default" since the Userpass user that they create will not have any access to secrets yet.
-
----
-name: chapter-5-review-questions
-# Chapter 5 Review
-* Vault では、どのような種類のエンティティを認証できますか？
-* Userpass 認証方法の資格情報は、どのようなシステムで管理されていますか？
-* デフォルトのポリシー以外のポリシーが割り当てられていないユーザーは、シークレットにアクセスできますか？
-
-
-???
-* Let's review what we learned in this chapter.
 
 ---
 name: chapter-5-review-answers
