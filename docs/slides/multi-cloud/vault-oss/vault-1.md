@@ -29,9 +29,8 @@ This is meant as a high level overview.  For detailed descriptions or instructio
 ---
 name: the-old-way
 layout: false
-# The Traditional Security Model
+# 従来のセキュリティモデル
 .center[![:scale 70%](images/bodiam_castle.jpg)]
-.center[別名「城と堀法」とも呼ばれています。"Castle and Moat"]
 
 ???
 * This picture shows the traditional castle and moat security model.
@@ -46,7 +45,7 @@ layout: true
 
 ---
 name: traditional-security-models
-# The Traditional Security Model
+# 従来のセキュリティモデル
 * 従来のセキュリティモデルは、境界線に基づいたセキュリティの考えに基づいて構築されていました。
 * ファイアウォールがあり、その中では安全だと思われていました。
 * データベースなどのリソースは、ほとんどが静的なものでした。 そのようなルールは IP アドレスに基づいており、クレデンシャルはソースコードに組み込まれていたり、ディスク上の静的ファイルに保存されていました。
@@ -56,7 +55,7 @@ This slide discusses the traditional security model
 
 ---
 name: problems-with-traditional-security-models
-# Problems with the Traditional Security Model
+# 従来のセキュリティモデルの問題
 * IPアドレスベースのルール
 * 以下のような問題のあるハードコードされた資格情報。
   * アプリとユーザーの共有サービスアカウント
@@ -68,9 +67,9 @@ name: problems-with-traditional-security-models
 ---
 name: the-new-way
 layout: false
-# Modern Secrets Management
+# モダンなシークレット管理
 .center[![:scale 65%](images/nomadic_houses.jpg)]
-.center[十分に定義された境界線がないため、アイデンティティによってセキュリティが強化されています。]
+.center[十分に定義された境界線がないため、アイデンティティによってセキュリティを強化します。
 
 ???
 * These are Mongolian Yurts or "Ger" as they are called locally. Instead of a castle with walls and a drawbridge, a fixed fortress that has an inside and an outside, these people move from place to place, bringing their houses with them.
@@ -167,14 +166,6 @@ layout: true
 - ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
 
----
-name: chapter-1-review-question
-# Chapter 1 Review
-
-* What is HashiCorp Vault?
-
-???
-* Let's review what we learned in this chapter.
 ---
 name: chapter-1-review-answer
 # Chapter 1 Review
