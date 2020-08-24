@@ -40,8 +40,9 @@ layout: true
 
 .footer[
 - Copyright 2019 HashiCorp
-- ![:scale 100%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
+- ![:scale 80%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
+強固な壁の内側は安全、という考え。
 
 ---
 name: traditional-security-models
@@ -68,7 +69,7 @@ name: problems-with-traditional-security-models
 name: the-new-way
 layout: false
 # モダンなシークレット管理
-.center[![:scale 65%](images/nomadic_houses.jpg)]
+.center[![:scale 60%](images/nomadic_houses.jpg)]
 定義された境界線がないため、アイデンティティによってセキュリティを強化します。
 
 ???
