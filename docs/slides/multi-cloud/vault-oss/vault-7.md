@@ -22,7 +22,7 @@ layout: true
 
 ---
 name: dynamic-database-secrets
-# Dynamic Secrets: Protecting Databases
+# Dynamic Secrets: データベースのクレデンシャル
 
 * データベースのクレデンシャルは通常長期間変更しません。
 * Vault の Database Secrets Engine は、データベース用の短命のクレデンシャルを動的に生成します。
@@ -38,7 +38,7 @@ name: dynamic-database-secrets
 
 ---
 name: database-engine-plugins
-# Database Secrets Engine: Plugins
+# Database Secrets Engine: プラグイン
 * Cassandra
 * Elasticsearch
 * Influxdb
@@ -55,14 +55,14 @@ name: database-engine-plugins
 
 ---
 name: database-engine-workflow
-# Database Secrets Engine Workflow
+# Database Secrets Engineのワークフロー
 
-1. データベース シークレット エンジンのインスタンスを有効にします。
-1. Vault 用に作成したサービス アカウントを使用して、正しいプラグインと接続 URL で構成します。
-1. 必要なパーミッションを指定する TTL および SQL ステートメントを使用して、1 つ以上のロールを作成します。
-1. アプリケーションとユーザーは、ロールのデフォルトの TTL で有効なクレデンシャルを Vault から取得し、最大 TTL まで更新することができます。
-1. 1.Vault は、期限切れのクレデンシャルを自動的に削除します。
-1. クレデンシャルが漏洩した場合、直ちにそのクレデンシャルを取り消すことができます。
+1. データベース シークレット エンジンのインスタンスを有効にする
+1. Vault 用に作成したサービス アカウントを使用して、正しいプラグインと接続URLを構成
+1. 必要なパーミッション、TTL、SQL ステートメントを設定し、1 つ以上のロールを作成
+1. ロールのデフォルトのTTLで有効なクレデンシャルをVaultから取得し、最大TTLまで利用可能
+1. Vault は、期限切れのクレデンシャルを自動的に削除
+1. また、必要があれば直ちにそのクレデンシャルを取り消すことが可能
 
 
 ???
@@ -74,23 +74,13 @@ name: database-engine-workflow
 * The TTL settings can be tuned to suit your needs.
 
 ---
-name: sample-web-app
-# Lab Environment for Chapters 7 and 8
-
-* 第7章と第8章のラボでは、Vaultサーバ上で動作するMySQLデータベースサーバを使用します。
-* 次のスライドでは、ワークショップで行う多くのステップの概要を説明します。
-
-???
-* Discuss the lab environment.
-
----
 name: mysql-configuration-steps
-# Configuration Steps for MySQL
+# MySQL用のSecret engineの設定
 
-1. いくつかのパスでデータベースのを有効にします。
-1. 1. MySQL プラグイン、接続 URL、ユーザー名、パスワード、許可されるロールを設定します。
-1. ルートのクレデンシャルをRotationさせます。Vault は、ステップ 2 で指定したパスワードを変更して、人間が知らないようにします。
-1. 特定の期間有効な新しいクレデンシャルを作成できるロールを作成します。
+1. データベースのSecret engineを有効にします。
+1. 1. MySQL プラグイン、接続URL、ユーザー名、パスワード、許可されるロールを設定
+1. ロールのクレデンシャルをRotationさせます。これによりステップ2で指定したパスワードを変更して、Vaultだけがそれを知っている状態にする
+1. 新しいクレデンシャルを作成できるロールを作成
 
 ???
 * These are the basic steps for configuring the mysql plugin with Vault's database secrets engine.
@@ -99,7 +89,7 @@ name: mysql-configuration-steps
 ---
 name: mysql-config-connection
 class: compact
-# Configuring Connections for MySQL
+# MySQLへの接続の設定
 #### これらのコマンドを実行して、Database secret engineを有効にし、MySQL で使用するための接続を構成します：
 ```bash
 vault secrets enable -path=lob_a/workshop/database database
@@ -113,7 +103,7 @@ vault write lob_a/workshop/database/config/wsmysqldatabase \
 
 vault write -force lob_a/workshop/database/rotate-root/wsmysqldatabase
 ```
-####  これにより、localhost上のMySQLサーバに対して「wsmysqldatabase」という接続が作成されます。
+####  localhost上のMySQLサーバに対して「wsmysqldatabase」という接続が作成されます。
 
 ???
 * This slide shows the commands to enable the Database secrets engine and configure a connection for MySQL.
@@ -128,19 +118,18 @@ vault write -force lob_a/workshop/database/rotate-root/wsmysqldatabase
 ---
 name: rotating-root-credentials
 class: compact
-# Rotating the Root Credentials for MySQL
-#### 1. Rootユーザーの代わりに、ユーザを作成したりパスワードを変更したりするのに十分な権限を持つ別のユーザを作成してください。これは、`GRANT ALL PRIVILEGES on *.* to 'hashicorp'@'%' with grant option;`を実行することで行うことができます。
-#### 2. 実際のユーザ名は、ホスト `'%'` のものでなければなりません。そのため、`'hashicorp'@'localhost'`ではなく、`'hashicorp'@'%'`のようなユーザを作成してください。
-#### 3. ユーザのホストとして `'%'` を使用したくない場合は、パス `<database>/config/<connection>` に書き込む際に `root_rotation_statements` を指定することができます; 例えば、`"ALTER USER '{{username}}}'@'localhost' IDENTIFIED BY '{{password}}}';"`.
-
+# MySQLのユーザーの作成
+### 1. Rootユーザーの代わりに、ユーザを作成したりパスワードを変更したりするのに十分な権限を持つ別のユーザを作成してください。
+#### `GRANT ALL PRIVILEGES on *.* to 'hashicorp'@'%' with grant option;`
+### 2. 実際のユーザ名は、ホスト `'%'` のものでなければなりません。そのため、`'hashicorp'@'localhost'`ではなく、`'hashicorp'@'%'`のようなユーザを作成してください。
 
 ???
 * We want to give some advice about rotating root credentials for the database secrets engine when using MySQL.
 
 ---
 class:compact
-# Configuring Roles for MySQL
-#### このコマンドを実行して、MySQLのロールを構成します。
+# MySQLへのロールの設定
+#### このコマンドを実行して、MySQLへのロールを構成します。
 ```sql
 vault write lob_a/workshop/database/roles/workshop-app-long \
     db_name=wsmysqldatabase \
@@ -149,7 +138,7 @@ vault write lob_a/workshop/database/roles/workshop-app-long \
     default_ttl="1h" \
     max_ttl="24h"
 ```
-#### これは、"wsmysqldatabase "接続に対するロールを定義し、初期TTLが1時間のクレデンシャルを生成します。しかし、その有効期限は24時間まで延長することができます。
+#### "wsmysqldatabase "接続に対するロールを定義し、初期TTLが1時間のクレデンシャルを生成します。その有効期限は必要があれば24時間まで延長(Renew)することができます。
 
 
 ???
@@ -161,8 +150,8 @@ vault write lob_a/workshop/database/roles/workshop-app-long \
 ---
 name: mysql-generate-creds
 class:compact
-# Generating Database Credentials
-#### このコマンドを実行して、前のスライドで設定したロールに対してMySQLデータベースの実際の資格情報を生成します。
+# Databaseへの動的シークレットの生成
+#### このコマンドで、設定したロールに対してMySQLデータベースのクレデンシャルを生成します。
 ```bash
 vault read lob_a/workshop/database/creds/workshop-app-long  
 ```
@@ -183,16 +172,16 @@ username           v-token-workshop-a-DM0BJ3eMlMhbf
 ---
 name: mysql-renew-revoke-creds
 class:compact
-# Renewing and Revoking Database Credentials
-####このコマンドを実行して、`<lease_id>` を正しい lease_id に置き換えてクレデンシャルを更新します。
+# DatabaseクレデンシャルのRenewとRevoke
+#### Renew: `<lease_id>` を正しい lease_id に置き換えてクレデンシャルを更新します。
 ```bash
 vault write sys/leases/renew lease_id="<lease_id>" increment="120"  
 ```
-#### このコマンドを実行して、`<lease_id>` を正しい lease_id に置き換えてクレデンシャルを失効させます。
+#### Revoke: `<lease_id>` を正しい lease_id に置き換えてクレデンシャルを失効させます。
 ```bash
 vault write sys/leases/revoke lease_id="<lease_id>"
 ```
-#### また、クレデンシャルの残りの寿命を判断することもできます。
+#### クレデンシャルの残りの寿命を取得します。
 ```bash
 vault write sys/leases/lookup lease_id="<lease_id>"
 ```
@@ -204,90 +193,17 @@ vault write sys/leases/lookup lease_id="<lease_id>"
 * It is also possible to determine the remaining lifetime of credentials.
 
 ---
-name: lab-database-challenge-1
-# Lab Challenge 7.1: Enable the Engine
-* In this lab challenge, you'll enable the database engine for MySQL and rotate its root credentials.
-* You'll do this in the [Vault Dynamic Database Credentials](https://play.instruqt.com/hashicorp/invite/sryhqfdm6sgx) Instruqt track.
-* Instructions:
-  * Click the "Enable the Database Secrets Engine" challenge of the "Vault Dynamic Database Credentials" track.
-  * Then click the green "Start" button.
-  * Follow the challenge's instructions.
-  * Click the green "Check" button when finished.
-
-???
-* Instruct the students to do the "Enable the Database Secrets Engine" challenge of the "Vault Dynamic Database Credentials" track.
-* This challenge has them enable the Database secrets engine on the path "lob_a/workshop/database" and rotate the root credentials for it.
-
----
-name: lab-database-challenge-2
-# Lab Challenge 7.2: Configure the Engine
-* In this lab, you'll configure a connection and two roles for the database.
-* Instructions:
-  * Click the "Configure the Database Secrets Engine" challenge of the "Vault Dynamic Database Credentials" track.
-  * Then click the green "Start" button.
-  * Follow the challenge's instructions.
-  * Click the green "Check" button when finished.
-
-???
-* Instruct the students to do the "Configure the Database Secrets Engine" challenge of the "Vault Dynamic Database Credentials" track.
-* This challenge has them configure a connection and two roles for the engine they created in the previous challenge.
-* One role will have an initial TTL of 1 hour with a maximum TTL of 24 hours.
-* The other will have an initial TTL of 3 minutes with a maximum TTL of 6 minutes.
-
----
-name: lab-database-challenge-3
-# Lab Challenge 7.3: Generate Credentials
-* In this lab, you'll generate and use credentials against both roles that you configured in the previous challenge.
-* Instructions:
-  * Click the "Generate and Use Dynamic Database Credentials" challenge of the "Vault Dynamic Database Credentials" track.
-  * Then click the green "Start" button.
-  * Follow the challenge's instructions.
-  * Click the green "Check" button when finished.
-
-???
-* Instruct the students to do the "Generate and Use Dynamic Database Credentials" challenge of the "Vault Dynamic Database Credentials" track.
-* This challenge has them generate short-lived credentials for the MySQL database.
-* They will use the `mysql` utility to connect to the database with those credentials.
-* They will see that the credentials are deleted after 3 minutes and that logging into MySQL with them is blocked.
-
----
-name: lab-database-challenge-4
-# Lab Challenge 7.4: Renew/Revoke Credentials
-* In this lab, you'll renew and revoke credentials generated by the database secrets engine.
-* Instructions:
-  * Click the "Renew and Revoke Database Credentials" challenge of the "Vault Dynamic Database Credentials" track.
-  * Then click the green "Start" button.
-  * Follow the challenge's instructions.
-  * Click the green "Check" button when finished.
-
-???
-* Instruct the students to do the "Renew and Revoke Database Credentials" challenge of the "Vault Dynamic Database Credentials" track.
-* This challenge has them extend the liftime of generated credentials with Vault's `sys/leases/renew` endpoint.
-* They will also revoke credentials with Vault's `sys/leases/revoke` endpoint.
-
----
-name: chapter-7-review-questions
-# Chapter 7 Review
-* Vault のDatabase secret engineを使用する主な利点は何ですか？
-* クレデンシャルの有効期限が切れた場合はどうなりますか？
-* Database secret engineは、この章に記載されているプラグインに限定されていますか？
-* 1 つの接続に対して複数のロールを使用することはできますか？
-
-???
-* Let's review what we learned in this chapter.
-
----
 name: chapter-7-review-answers
 # Chapter 7 Review
 
 * Vault のDatabase secret engineを使用する主な利点は何ですか？
-  * クレデンシャルは短命であり、危殆化する可能性が低い。
+  * クレデンシャルを短命で扱うことで危殆化することを防ぐ
 * クレデンシャルの有効期限が切れるとどうなりますか？
-  * Vault は、データベース サーバーからクレデンシャルを削除します。
+  * Vault は、データベースからクレデンシャルを削除します。
 * Database secret engineは、この章でリストされているプラグインに限定されますか？
   * カスタム プラグインを作成することができます。
 * 1 つの接続に対して複数のロールを使用できますか？
-  * はい。これにより、異なるアプリが異なるTTLでクレデンシャルを取得することができます。
+  * はい。これにより、異なるアプリが異なるTTLでクレデンシャルを取得できます。
 
 ???
 * Here are the answers to the review questions.

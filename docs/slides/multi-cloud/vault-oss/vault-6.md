@@ -10,7 +10,7 @@ count: false
 
 ???
 
-* Chapter 6 introduces Vault Policies
+* Chapter 6 introduces Vault ポリシー
 
 ---
 layout: true
@@ -22,7 +22,7 @@ layout: true
 
 ---
 name: vault-policies
-# Vault Policies
+# Vault ポリシー
 * Vault ポリシーは、ユーザーおよびアプリケーションがアクセスできるシークレットを制限します。
 * デフォルトでアクセスを拒否し、最小特権の慣行に従っています。
 * Vault 管理者は、ポリシーステートメントを使用して、ユーザーとアプリケーションに特定のパスへのアクセスを明示的に許可する必要があります。
@@ -31,8 +31,8 @@ name: vault-policies
 
 ---
 name: vault-policy-example
-# A Vault Policy Example
-* Example of a Vault policy:
+# ポリシーの例
+* ポリシー
 ```hcl
 # Allow tokens to look up their own properties
 path "auth/token/lookup-self" {
@@ -46,12 +46,12 @@ path "auth/token/lookup-self" {
 
 ---
 name: vault-policy-paths-capabilities
-# Policy Paths and Capabilities
-* ポリシーのパスは、Vault API パスにマップされます。
+# ポリシーのPathとCapabilities
+* ポリシーのPathは、Vault API Pathにマップされます。
 * 最も一般的な機能は、`create`、`read`、`update`、`delete`、`list`です。POSTやGETなどのHTTP動詞に対応します。
 * 特殊な権限：
   * `sudo` は root で保護されたパスへのアクセスを許可します。
-  * `deny` はパスへのアクセスを拒否し、他の機能よりも優先されます。
+  * `deny` はPathへのアクセスを拒否し、他の機能よりも優先されます。
 
 
 
@@ -60,9 +60,9 @@ name: vault-policy-paths-capabilities
 
 ---
 name: policies-for-lobs
-# Configuring Policies for LOBs
-* 多くの組織では、ビジネスライン（LOB）と部門別にVaultのシークレットを管理しています。
-* ここでは、業務Aライン、部門1のポリシーの例を示します。
+# 管理者向けのポリシー
+* 多くの組織では、管理者とユーザーで異なるポリシーを使います。
+* ここでは、業務A、部門1の管理者のポリシーの例を示します。
 
 ```hcl
 path "lob_a/dept_1/*" {
@@ -79,41 +79,16 @@ path "lob_a/dept_1/*" {
 
 ---
 name: vault-policy-commands
-# Vault Policy CLI Commands
+# Vault PolicyのCLIコマンド
 * Vault のポリシーは、Vault の CLI、UI、または API を使用して、Vault サーバに追加できます。
 * CLIでポリシーを追加するコマンドは、`vault policy write`です。
 * 以下は、HCLファイル "lob-A-dept-1-policy.hcl"から "lob-A-dept-1 "というポリシーを作成するコマンドです。
 	* `vault policy write lob-A-dept-1 lob-A-dept-1-policy.hcl`
-* このポリシーをUserpassユーザーに関連付けるコマンドは以下の通りです。
-	* `vault write auth/userpass/users/joe/policies policies=lob-A-dept-1` です。
+* このポリシーをUserpass認証のユーザーに関連付けるコマンドは以下の通りです。
+	* `vault write auth/userpass/users/joe/policies policies=lob-A-dept-1`
 
 ???
 Describe the most important Vault CLI commands for policies.
-
----
-name: lab-vault-basics-challenge-7
-# Lab Challenge 6.1: Vault Policies
-* In this lab, you'll use Vault policies to grant different users access to different secrets.
-* Instructions:
-  * Click the "Use Vault Policies" challenge of the "Vault Basics" track.
-  * Then click the green "Start" button.
-  * Follow the challenge's instructions.
-  * Click the green "Check" button when finished.
-
-???
-* Instruct the students to do the "Use Vault Policies" challenge of the "Vault Basics" track.
-* This challenge has them create a second user and create and associate policies with their 2 users.
-* It then has them valdiate that each user can only access their own secrets.
-
----
-name: chapter-6-review-questions
-# Chapter 6 Review
-* Vault は、デフォルトでシークレットへのアクセスを許可しますか？
-* HTTP の動詞に対応するポリシー機能は何ですか？
-* Vault にポリシーを追加するために使用できる CLI コマンドは何ですか？
-
-???
-* Let's review what we learned in this chapter.
 
 ---
 name: chapter-6-review-answers
