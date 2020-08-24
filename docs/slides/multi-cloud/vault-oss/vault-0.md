@@ -37,12 +37,8 @@ The link to this slide deck
 name: Introductions
 # Introductions
 
-* Masatomo Ito
-* Sr. Solution Engineer
-* Secrets Management Experience
-	* Vault
-* Favorite Text Editor
-	* vi
+* 伊藤仁智（Masatomo Ito)
+* Sr. Solution Engineer @ HashiCorp Japan
 
 ???
 * Use this slide to introduce yourself, give a little bit of your background story, then go around the room and have all your participants introduce themselves.
@@ -50,7 +46,7 @@ name: Introductions
 * The favorite text editor question is a good ice breaker, but perhaps more importantly it gives you an immediate gauge of how technical your users are.  
 
 ---
-name: Table-of-Contents
+name: ワークショップの内容
 # Table of Contents
 
 1. HashiCorp Vault Overview
@@ -59,18 +55,14 @@ name: Table-of-Contents
 1. Vault Secrets Engines
 1. Vault Authentication Methods
 1. Vault Policies
-1. Dynamic Database Secrets
-1. Encryption as a Service
 
 ???
 The table of contents for the workshop
 
 ---
 name: instruqt-tracks
-# Lab Environment Used
+# ワークショップ環境について
 * このワークショップでは[Instruqt](https://instruqt.com)でハンズオン作業をしていただきます。
 * Instruqtではいくつかのトラックでチャレンジをこなしていただきます。
 * このワークショップでは以下のトラックを使用します。
     1. [Vault Basics](https://play.instruqt.com/hashicorp/invite/qfwncq62zsxu)
-    1. [Vault Dynamic Database Credentials](https://play.instruqt.com/hashicorp/invite/sryhqfdm6sgx)
-    1. [Vault Encryption as a Service](https://play.instruqt.com/hashicorp/invite/qleasfx1dszc)
