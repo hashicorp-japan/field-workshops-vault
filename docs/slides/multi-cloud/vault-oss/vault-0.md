@@ -34,18 +34,6 @@ https://hashicorp-japan.github.io/field-workshops-vault/docs/slides/multi-cloud/
 The link to this slide deck
 
 ---
-name: Introductions
-# Introductions
-
-* 伊藤仁智（Masatomo Ito)
-* Sr. Solution Engineer @ HashiCorp Japan
-
-???
-* Use this slide to introduce yourself, give a little bit of your background story, then go around the room and have all your participants introduce themselves.
-
-* The favorite text editor question is a good ice breaker, but perhaps more importantly it gives you an immediate gauge of how technical your users are.  
-
----
 name: ワークショップの内容
 # Table of Contents
 
