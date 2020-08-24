@@ -36,7 +36,7 @@ name: vault-secrets-engines-1
 
 ---
 name:vault-secrets-engines-2
-# Important Vault Secrets Engines
+# いくつかのVault Secrets Engines
 * Key/Value (KV)
 * PKI
 * SSH
@@ -59,9 +59,9 @@ Spend some time pointing out what some of these do:
 
 ---
 name: enabling-secrets-engines
-# Enabling Secrets Engines
+# Secrets Enginesの有効化
 
-* ほとんどの Vault secrets engineは、明示的に有効にする必要があります。
+* Vault secrets engineは、明示的に有効にする必要があります。
 	* `vault secrets enable`コマンドで行います。
 * 各エンジンはデフォルトのPathがあります。
 	* カスタムパスは、CLIコマンドやAPIコールで指定する必要があります。
@@ -78,12 +78,12 @@ name: enabling-secrets-engines
 
 ---
 name: vault-kv-engine
-# Vault's KV Secrets Engine
+# KV Secrets Engine
 * VaultのKV Secret engineには2つのバージョンがあります。
   * KV v1 (バージョニングなし)
   * KV v2 (バージョニング付き)
-* Vault は、「Prod」モードのサーバでは、KV シークレットエンジンのインスタンスを有効にしません。
-* 自分で有効にする必要があります。
+* DevモードのVaultでは、KVシークレットエンジンはデフォルトで有効になっています。
+* ProdモードのVaultでは、KV シークレットエンジンは自分で有効にする必要があります。
 
 ???
 * We already used Vault's Key/Value (KV) engine in the second challenge of the "Vault Basics" Instruqt track that had been automatically enabled for the "Dev" mode server.
@@ -92,44 +92,17 @@ name: vault-kv-engine
 
 ---
 name: vault-kv-commands
-# KV Secrets Engine Commands
+# KV Secrets Engineのコマンド
 * 以下のコマンドを使用して、KV v2 secrets engineのインスタンスをデフォルトパス `kv`にマウントします。
-	* `vault secrets enable -version=2 kv` のようにしてください。
+	* `vault secrets enable -version=2 kv` のようになります。
 * `vault kv` コマンドでKV seacret engineを操作することができます。
-  * `vault kv list` は指定されたパスのシークレットをリストアップします。
-  * `vault kv put` は指定したパスにシークレットを書き込みます。
-  * `vault kv get` は指定したパスにあるシークレットを読み込みます。
-  * `vault kv delete` は指定されたパスにあるシークレットを削除します。
+  * `vault kv list` は指定されたパスのシークレットをリストアップ
+  * `vault kv put` は指定したパスにシークレットを書き込み
+  * `vault kv get` は指定したパスにあるシークレットを読み込み
+  * `vault kv delete` は指定されたパスにあるシークレットを削除
 
 ???
 * サンプル
-
----
-name: lab-vault-basics-challenge-5
-# Lab Challenge 4.1: KV v2 Secrets Engine
-* In this lab, you'll enable and use the KV v2 secrets engine.
-* Note that the path will be `kv` instead of `secret`.
-* Instructions:
-  * Click the "Use the KV V2 Secrets Engine" challenge of the "Vault Basics" track.
-  * Then click the green "Start" button.
-  * Follow the challenge's instructions.
-  * Click the green "Check" button when finished.
-
-???
-* Instruct the students to do the "Use the KV V2 Secrets Engine" challenge of the "Vault Basics" track.
-* This challenge has them enable an instance of the KV v2 secrets engine.
-* Emphasize that the path will be `kv` instead of `secret` as was the case for the challenges with the Dev mode server.
-
----
-name: chapter-4-review-questions
-# Chapter 4 Review
-
-* 複数のインスタンスを有効にするために、`vault secrets enable`コマンドにはどのようなオプションが追加されますか?
-* KVのSecret engineの2つのバージョンの違いは何ですか?
-* KV v2シークレットの古いバージョンは取得できますか?
-
-???
-* Let's review what we learned in this chapter.
 
 ---
 name: chapter-4-review-answers
