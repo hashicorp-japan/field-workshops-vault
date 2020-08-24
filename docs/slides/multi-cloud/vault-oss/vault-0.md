@@ -52,5 +52,5 @@ name: instruqt-tracks
 # ワークショップ環境について
 * このワークショップでは[Instruqt](https://instruqt.com)でハンズオン作業をしていただきます。
 * Instruqtではいくつかのトラックでチャレンジをこなしていただきます。
-* このワークショップでは以下のトラックを使用します。
-    1. [Vault Basics](https://play.instruqt.com/hashicorp/invite/qfwncq62zsxu)
+* InstruqtのトラックへのリンクはZoomのチャットでお知らせします。
+	* リンクが分からなくなったら遠慮なくチャットなどでお聞きください。
