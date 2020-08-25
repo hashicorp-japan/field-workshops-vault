@@ -32,10 +32,11 @@ layout: false
 # 従来のセキュリティモデル
 .center[![:scale 70%](images/bodiam_castle.jpg)]
 
+強固な壁の内側は安全、という考え。
+
 ???
 * This picture shows the traditional castle and moat security model.
 
-強固な壁の内側は安全、という考え。
 ---
 layout: true
 
