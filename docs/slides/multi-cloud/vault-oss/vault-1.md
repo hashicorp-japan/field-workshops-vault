@@ -35,6 +35,7 @@ layout: false
 ???
 * This picture shows the traditional castle and moat security model.
 
+強固な壁の内側は安全、という考え。
 ---
 layout: true
 
@@ -42,7 +43,6 @@ layout: true
 - Copyright 2019 HashiCorp
 - ![:scale 80%](https://hashicorp.github.io/field-workshops-assets/assets/logos/HashiCorp_Icon_Black.svg)
 ]
-強固な壁の内側は安全、という考え。
 
 ---
 name: traditional-security-models
