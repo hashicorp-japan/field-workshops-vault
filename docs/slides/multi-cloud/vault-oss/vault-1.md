@@ -30,7 +30,7 @@ This is meant as a high level overview.  For detailed descriptions or instructio
 name: the-old-way
 layout: false
 # 従来のセキュリティモデル
-.center[![:scale 70%](images/bodiam_castle.jpg)]
+.center[![:scale 50%](images/bodiam_castle.jpg)]
 
 強固な壁の内側は安全、という考え。
 
