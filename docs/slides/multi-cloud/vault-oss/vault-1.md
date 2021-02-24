@@ -3,7 +3,7 @@ class: title, shelf, no-footer, fullbleed
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Chapter 1  
+# Chapter 1
 ## HashiCorp Vault Overview
 
 ![:scale 15%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_vault.png)
@@ -16,15 +16,91 @@ name: hashiCorp-vault-overview
 # HashiCorp Vault Overview
 ![:scale 10%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_vault.png)
 
-  * HashiCorp Vaultは、API主導のクラウドに依存しない秘密管理システムです。
+  * HashiCorp Vaultは、API主導のクラウドに依存しないシークレット管理システムです。
   * ハイブリッドクラウド環境でセンシティブなデータを安全に保存・管理することができます。
-  * Vault を使用して、動的に短命のクレデンシャルを生成したり、アプリケーションのデータをその場で暗号化したりすることもできます。
+  * Vaultを使用して、動的に短命のクレデンシャルを生成したり、アプリケーションのデータをその場で暗号化したりすることもできます。
 
 ???
 This is meant as a high level overview.  For detailed descriptions or instructions please see the docs, API guide, or learning site:
 * https://www.vaultproject.io/docs/
 * https://www.vaultproject.io/api/
 * https://learn.hashicorp.com/vault/
+
+---
+name: what-is-secret
+# Secretとは？
+
+### 何かにアクセスするために必要な何か
+
+  * ユーザーネーム・パスワード
+  * APIトークン
+  * X509暗号鍵
+  * などなど
+
+### 決して流出・紛失してはいけないもの
+  * 悪意をもったアクセスを許してしまう
+  * 悪意をもったアクションを許してしまう
+
+---
+name: secret-sprawl-1
+# Secret sprawlとは？
+
+### 1. どこにSecretがあるか分からなくなる問題
+
+  * ソースコード？
+  * 設定ファイル？
+  * GitのRepo?
+  * エクセル？
+
+  * これからのマイクロサービス化の中でどう管理するか？
+  * サーバーレスでは？
+
+---
+name: secret-sprawl-2
+# Secret sprawlとは？
+
+### 2. Secret管理に特化したアクセスコントロールできない問題
+
+  * Wiki、Dropbox、Google drive、VCS、などなど
+    * Secret管理用にデザインされていない
+  * アプリケーションにどう渡すか？
+  * 厳密に設計されたアクセスコントロール
+  * 細かい粒度のAudit log
+
+---
+name: secret-sprawl-3
+# Secret sprawlとは？
+
+### 3. Secretの流出が起きたときどうするか問題
+
+  * 鍵の流出にどう気づくか？
+  * 何が（もしくは誰が）流出させたか？
+  * どのように対応するか？
+  * ローテーション
+  * データは暗号化しておく
+    * もしデータが流出しても暗号鍵がなければ解読不可能
+
+---
+name: secret-sprawl-solution-1
+# じゃあどうするか？
+
+#### 1. Secretの中央管理（Centralization)
+#### 2. 暗号化（Encryption)
+#### 3. 認証（Authentication)
+#### 4. 認可（Authorization)
+#### 5. 鍵交換（Rotation)
+
+---
+name: secret-sprawl-solution-2
+# じゃあどうするか？
+
+#### 1. Secretの中央管理（Centralization)
+#### 2. 暗号化（Encryption)
+#### 3. 認証（Authentication)
+#### 4. 認可（Authorization)
+#### 5. 鍵交換（Rotation)
+
+## これ全部Vaultで出来ます！
 
 ---
 name: the-old-way

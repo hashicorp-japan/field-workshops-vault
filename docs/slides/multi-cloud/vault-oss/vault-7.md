@@ -3,7 +3,7 @@ class: title, shelf, no-footer, fullbleed
 background-image: url(https://hashicorp.github.io/field-workshops-assets/assets/bkgs/HashiCorp-Title-bkg.jpeg)
 count: false
 
-# Chapter 7    
+# Chapter 7
 ## Dynamic Database Secrets
 
 ![:scale 15%](https://hashicorp.github.io/field-workshops-assets/assets/logos/logo_vault.png)
@@ -90,7 +90,7 @@ name: mysql-configuration-steps
 name: mysql-config-connection
 class: compact
 # MySQLへの接続の設定
-#### これらのコマンドを実行して、Database secret engineを有効にし、MySQL で使用するための接続を構成します：
+#### このコマンドを実行して、Database secret engineを有効にし、MySQL で使用するための接続を構成します：
 ```bash
 vault secrets enable -path=lob_a/workshop/database database
 
@@ -103,7 +103,7 @@ vault write lob_a/workshop/database/config/wsmysqldatabase \
 
 vault write -force lob_a/workshop/database/rotate-root/wsmysqldatabase
 ```
-####  localhost上のMySQLサーバに対して「wsmysqldatabase」という接続が作成されます。
+この例では、localhost上のMySQLサーバに対しての「wsmysqldatabase」という接続を作成します。
 
 ???
 * This slide shows the commands to enable the Database secrets engine and configure a connection for MySQL.
@@ -121,7 +121,7 @@ class: compact
 # MySQLのユーザーの作成
 ### 1. Rootユーザーの代わりに、ユーザを作成したりパスワードを変更したりするのに十分な権限を持つ別のユーザを作成してください。
 #### `GRANT ALL PRIVILEGES on *.* to 'hashicorp'@'%' with grant option;`
-### 2. 実際のユーザ名は、ホスト `'%'` のものでなければなりません。そのため、`'hashicorp'@'localhost'`ではなく、`'hashicorp'@'%'`のようなユーザを作成してください。
+### 2. ユーザ名は、ホスト `'%'` のものでなければなりません。そのため、`'hashicorp'@'localhost'`ではなく、`'hashicorp'@'%'`のようなユーザを作成してください。
 
 ???
 * We want to give some advice about rotating root credentials for the database secrets engine when using MySQL.
@@ -138,7 +138,7 @@ vault write lob_a/workshop/database/roles/workshop-app-long \
     default_ttl="1h" \
     max_ttl="24h"
 ```
-#### "wsmysqldatabase "接続に対するロールを定義し、初期TTLが1時間のクレデンシャルを生成します。その有効期限は必要があれば24時間まで延長(Renew)することができます。
+#### "wsmysqldatabase" 接続に対するロールを定義し、初期TTLが1時間のクレデンシャルを生成します。その有効期限は必要があれば24時間まで延長(Renew)することができます。
 
 
 ???
@@ -153,7 +153,7 @@ class:compact
 # Databaseへの動的シークレットの生成
 #### このコマンドで、設定したロールに対してMySQLデータベースのクレデンシャルを生成します。
 ```bash
-vault read lob_a/workshop/database/creds/workshop-app-long  
+vault read lob_a/workshop/database/creds/workshop-app-long
 ```
 #### 以下のようなレスポンスが返ります。
 ```bash
